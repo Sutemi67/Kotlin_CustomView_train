@@ -12,7 +12,7 @@ internal class ButtonsContainer @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.DefaultButtonsContainerStyle,
 ) : LinearLayout(
     context, attrs, defStyleAttr, defStyleRes
 ) {
@@ -20,6 +20,14 @@ internal class ButtonsContainer @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.buttons_container, this, true)
         val topButton = findViewById<Button>(R.id.top_button)
         val bottomButton = findViewById<Button>(R.id.bottom_button)
+
+        this.orientation = VERTICAL
+        this.setPadding(
+            resources.getDimensionPixelSize(R.dimen.dp16),
+            resources.getDimensionPixelSize(R.dimen.dp16),
+            resources.getDimensionPixelSize(R.dimen.dp16),
+            resources.getDimensionPixelSize(R.dimen.dp16)
+        )
 
         context.theme.obtainStyledAttributes(
             attrs,
