@@ -17,13 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <include
-        layout="@layout/buttons_container"
+    <apc.appcradle.customview.ButtonsContainer
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:bottomButtonBackgroundColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:topButtonText="Top Button - Main Activity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ButtonsContainer">
+        <attr name="topButtonText" format="string" />
+        <attr name="bottomButtonBackgroundColor" format="color" />
+    </declare-styleable>
+</resources>
