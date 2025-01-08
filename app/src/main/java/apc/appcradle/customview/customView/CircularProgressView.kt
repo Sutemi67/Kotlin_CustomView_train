@@ -6,10 +6,13 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import apc.appcradle.customview.R
+import kotlin.math.atan2
+import kotlin.math.max
 import kotlin.math.min
 
 
@@ -67,6 +70,19 @@ class CircularProgressView @JvmOverloads constructor(
         drawArc(arcRect, -90f, sweepAngle, false, progressPaint)
     }
 
+    private fun updateProgress(pX: Float, pY: Float) {
+        val dy = (pY - centerY).toDouble()
+        val dx = (pX - centerX).toDouble()
+        var angle = Math.toDegrees(atan2(dy, dx) + (Math.PI / 2))
+        if (angle < 0) {
+            angle += 360
+        }
+        val progress = max(0.0, min(1.0, angle / 360.0))
+        setCurrentProgress(
+            newCurrentProgress = (progress * maxProgress).toFloat()
+        )
+    }
+
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         // Расчёт ширины
         val widthSize = MeasureSpec.getSize(widthMeasureSpec)
@@ -109,5 +125,15 @@ class CircularProgressView @JvmOverloads constructor(
         )
     }
 
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        when (event?.action) {
+            MotionEvent.ACTION_DOWN,
+            MotionEvent.ACTION_MOVE -> {
+                updateProgress(event.x, event.y)
+                return true
+            }
+        }
+        return super.onTouchEvent(event)
+    }
 
 }
