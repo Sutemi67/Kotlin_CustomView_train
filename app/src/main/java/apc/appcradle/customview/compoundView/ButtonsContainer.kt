@@ -1,4 +1,4 @@
-package apc.appcradle.customview
+package apc.appcradle.customview.compoundView
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import apc.appcradle.customview.R
 
 internal class ButtonsContainer @JvmOverloads constructor(
     context: Context,
