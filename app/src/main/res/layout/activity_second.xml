@@ -9,6 +9,7 @@
     tools:context=".SecondActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -17,7 +18,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <apc.appcradle.customview.customView.CustomImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:imageResId="@drawable/codepath"
+        app:layout_constraintBottom_toTopOf="@+id/buttonsContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <apc.appcradle.customview.compoundView.ButtonsContainer
+        android:id="@+id/buttonsContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

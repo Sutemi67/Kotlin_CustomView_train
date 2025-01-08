@@ -7,6 +7,11 @@
         <attr name="bottomButtonBackgroundColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="CustomImageView">
+        <attr name="imageResId"
+            format="reference" />
+    </declare-styleable>
+
     <!-- Стиль ButtonsContainer для светлой темы -->
     <style name="DayButtonsContainerStyle">
         <item name="topButtonBackgroundColor">#3F51B5</item>

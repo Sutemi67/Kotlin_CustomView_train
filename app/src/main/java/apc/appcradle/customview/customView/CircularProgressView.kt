@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
+import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.AttrRes
@@ -26,6 +27,8 @@ class CircularProgressView @JvmOverloads constructor(
     //region Размеры
     private val minViewSize = resources.getDimensionPixelSize(R.dimen.circularProgressViewMinSize)
     private val strokeWidthPx = 20f
+    private var maxProgress = 100f
+    private var currentProgress = 35f
 
     //endregion
     //region Кисти
@@ -49,8 +52,21 @@ class CircularProgressView @JvmOverloads constructor(
     private val arcRect = RectF()
     //endregion
 
-    private var maxProgress = 100f
-    private var currentProgress = 35f
+    private val gestureDetector = GestureDetector(
+        context,
+        object : GestureDetector.SimpleOnGestureListener() {
+            override fun onLongPress(e: MotionEvent) {
+                // логика обработки
+            }
+
+            override fun onDoubleTap(e: MotionEvent): Boolean {
+                // логика обработки
+                return true
+            }
+
+            // ...
+        }
+    )
 
     fun setCurrentProgress(newCurrentProgress: Float) {
         if (newCurrentProgress < 0f || newCurrentProgress > 100f) {
@@ -125,15 +141,15 @@ class CircularProgressView @JvmOverloads constructor(
         )
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        when (event?.action) {
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.action) {
             MotionEvent.ACTION_DOWN,
             MotionEvent.ACTION_MOVE -> {
                 updateProgress(event.x, event.y)
                 return true
             }
         }
-        return super.onTouchEvent(event)
+        return gestureDetector.onTouchEvent(event)
     }
 
 }
