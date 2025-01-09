@@ -8,8 +8,7 @@
     </declare-styleable>
 
     <declare-styleable name="CustomImageView">
-        <attr name="imageResId"
-            format="reference" />
+        <attr name="imageResId" format="reference" />
     </declare-styleable>
 
     <!-- Стиль ButtonsContainer для светлой темы -->

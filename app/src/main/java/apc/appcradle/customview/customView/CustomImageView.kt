@@ -20,7 +20,6 @@ class CustomImageView @JvmOverloads constructor(
     private val imageBitmap: Bitmap?
     private var imageRect = RectF(0f, 0f, 0f, 0f)
 
-
     init {
         context.theme.obtainStyledAttributes(
             attrs,
